@@ -20,7 +20,7 @@
     >
       Cargar a Firebase
     </button>
-    <button class="btn btn-danger">Limpiar</button>
+    <button (click)="limpiarArchivos()" class="btn btn-danger">Limpiar</button>
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -31,7 +31,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let archivo of archivos">
-          <td>{{ archivo.nombreArchivo }}</td>
+          <td [ngClass]="{ 'text-green': archivo.progreso >= 100 }">
+            {{ archivo.nombreArchivo }}
+          </td>
           <td>{{ archivo.archivo.size / 1024 / 1024 | number: ".2-2" }} MB</td>
           <td>
             <div class="progress">
